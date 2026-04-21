@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recíclame - Gestión de Usuarios</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#10b981",
+            "primary-dark": "#0f172a",
+            "table-panel": "#dfe6f5",
+            "surface-soft": "#f8fafc",
+            "surface-card": "#ffffff",
+            "text-main": "#0f172a",
+            "text-soft": "#64748b",
+            "text-muted": "#94a3b8",
+            "danger": "#e11d48",
+            "warning": "#f59e0b",
+            "success": "#10b981"
+          },
+          boxShadow: {
+            soft: "0 8px 24px rgba(15, 23, 42, 0.05)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { font-family: Inter, system-ui, sans-serif; }
+  </style>
+</head>
+
+<body class="min-h-screen bg-surface-soft text-text-main">
+  <div class="flex min-h-screen">
+    <!-- Sidebar compacta -->
+    <aside class="fixed left-0 top-0 z-50 flex h-screen w-64 flex-col border-r border-slate-100 bg-white px-5 py-6 shadow-[4px_0_18px_rgba(0,0,0,0.02)]">
+      <div class="mb-8 flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 3c2.7 0 5.18 1.07 7 2.82M21 12c0 2.7-1.07 5.18-2.82 7M12 21c-2.7 0-5.18-1.07-7-2.82M3 12c0-2.7 1.07-5.18 2.82-7" stroke-width="2" stroke-linecap="round"/>
+            <path d="M8.5 8.5A4.95 4.95 0 0 1 12 7c1.3 0 2.49.5 3.38 1.32M15.5 15.5A4.95 4.95 0 0 1 12 17a4.98 4.98 0 0 1-3.54-1.46M7 12h3m4 0h3" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-xl font-extrabold leading-none text-slate-900">Recíclame</h1>
+          <p class="mt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">Gestión Circular</p>
+        </div>
+      </div>
+
+      <nav class="flex-1 space-y-1">
+        <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-500 hover:text-slate-900">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M4 6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM14 6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM4 16a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM14 16a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z" stroke-width="2"/>
+          </svg>
+          Dashboard
+        </a>
+
+        <a href="#" class="flex items-center gap-3 rounded-full bg-primary/5 px-4 py-3 text-sm font-semibold text-primary">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M17 20a4 4 0 0 0-8 0M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M5 20a3 3 0 0 1 3-3m8 3a3 3 0 0 1 3-3" stroke-width="2"/>
+          </svg>
+          Usuarios
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-500 hover:text-slate-900">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-width="2"/>
+          </svg>
+          Estudios
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-500 hover:text-slate-900">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H10l2 2h5.5A2.5 2.5 0 0 1 20 8.5v9a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5z" stroke-width="2"/>
+          </svg>
+          Repositorio Normativo
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-500 hover:text-slate-900">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke-width="2"/>
+          </svg>
+          Registros de actividad
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-500 hover:text-slate-900">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14" stroke-width="2"/>
+          </svg>
+          Registros de descargas
+        </a>
+      </nav>
+
+      <div class="mt-auto space-y-1 border-t border-slate-100 pt-5">
+        <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-500 hover:text-slate-900">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M10.325 4.317a1 1 0 0 1 1.35-.936l.695.278a1 1 0 0 0 .739 0l.695-.278a1 1 0 0 1 1.35.936l.057.746a1 1 0 0 0 .528.818l.62.35a1 1 0 0 1 .377 1.36l-.375.648a1 1 0 0 0 0 .998l.375.648a1 1 0 0 1-.377 1.36l-.62.35a1 1 0 0 0-.528.818l-.057.746a1 1 0 0 1-1.35.936l-.695-.278a1 1 0 0 0-.739 0l-.695.278a1 1 0 0 1-1.35-.936l-.057-.746a1 1 0 0 0-.528-.818l-.62-.35a1 1 0 0 1-.377-1.36l.375-.648a1 1 0 0 0 0-.998l-.375-.648a1 1 0 0 1 .377-1.36l.62-.35a1 1 0 0 0 .528-.818z" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="3" stroke-width="1.8"/>
+          </svg>
+          Configuración
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-danger">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M15 12H3m0 0 4-4m-4 4 4 4M10 7V6a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3v-1" stroke-width="2"/>
+          </svg>
+          Cerrar Sesión
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main content compacto -->
+    <div class="ml-64 flex-1">
+      <header class="sticky top-0 z-40 flex h-14 items-center justify-between bg-white/80 px-6 backdrop-blur-md shadow-sm">
+        <span class="text-xl font-bold tracking-tight text-primary">Recíclame</span>
+
+        <div class="flex items-center gap-4">
+          <button class="rounded-full p-2 text-slate-500 hover:bg-slate-50" aria-label="Notificaciones">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6.002 6.002 0 0 0-4-5.659V5a2 2 0 1 0-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h16" stroke-width="1.8"/>
+              <path d="M10 20a2 2 0 0 0 4 0" stroke-width="1.8"/>
+            </svg>
+          </button>
+
+          <button class="rounded-full p-2 text-slate-500 hover:bg-slate-50" aria-label="Ayuda">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 18h.01M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="9" stroke-width="1.8"/>
+            </svg>
+          </button>
+
+          <div class="h-7 w-px bg-slate-200"></div>
+
+          <div class="flex items-center gap-3">
+            <div class="text-right">
+              <p class="text-sm font-bold text-slate-900">Ana Flores</p>
+              <p class="text-[10px] font-bold uppercase tracking-wider text-primary">Admin</p>
+            </div>
+            <div class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-emerald-100 bg-emerald-100 text-xs font-bold text-emerald-700">
+              AF
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="mx-auto max-w-6xl space-y-6 p-6">
+        <section>
+          <h2 class="mb-1 text-3xl font-extrabold tracking-tight text-primary-dark">Gestión de Usuarios</h2>
+          <p class="max-w-2xl text-sm font-medium text-slate-500">
+            Administra los accesos, roles y el ciclo de vida de los integrantes de la red de economía circular.
+          </p>
+        </section>
+
+        <!-- Banner más bajo -->
+        <section class="flex items-center justify-between rounded-[2rem] bg-primary-dark px-8 py-6 text-white shadow-soft">
+          <div class="flex items-center gap-5">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10">
+              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M15 19a6 6 0 1 0-12 0M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM19 8v6M22 11h-6" stroke-width="2"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold">Solicitudes Pendientes</h3>
+              <p class="max-w-md text-sm text-slate-400">Hay 5 nuevos usuarios esperando validación para ingresar a la plataforma.</p>
+            </div>
+          </div>
+
+          <button class="flex items-center gap-2 rounded-full bg-[#006c49] px-6 py-3 text-sm font-bold hover:bg-[#005a3d]">
+            Revisar solicitudes
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M5 12h14m-5-5 5 5-5 5" stroke-width="2"/>
+            </svg>
+          </button>
+        </section>
+
+        <!-- KPIs más pequeños -->
+        <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="relative overflow-hidden rounded-[1.75rem] border-l-4 border-slate-300 bg-white p-6 shadow-sm">
+            <p class="mb-2 text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Total Usuarios</p>
+            <h4 class="text-3xl font-extrabold text-slate-900">142</h4>
+            <svg class="absolute bottom-4 right-4 h-10 w-10 text-slate-100" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M17 20a4 4 0 0 0-8 0M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M5 20a3 3 0 0 1 3-3m8 3a3 3 0 0 1 3-3" stroke-width="1.8"/>
+            </svg>
+          </article>
+
+          <article class="relative overflow-hidden rounded-[1.75rem] border-l-4 border-primary bg-white p-6 shadow-sm">
+            <p class="mb-2 text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Activos</p>
+            <h4 class="text-3xl font-extrabold text-primary">128</h4>
+            <svg class="absolute bottom-4 right-4 h-10 w-10 text-primary/10" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.707 7.707-5 5a1 1 0 0 1-1.414 0l-2-2 1.414-1.414L11 12.586l4.293-4.293 1.414 1.414Z"/>
+            </svg>
+          </article>
+
+          <article class="relative overflow-hidden rounded-[1.75rem] border-l-4 border-rose-500 bg-white p-6 shadow-sm">
+            <p class="mb-2 text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Bloqueados</p>
+            <h4 class="text-3xl font-extrabold text-rose-600">9</h4>
+            <svg class="absolute bottom-4 right-4 h-10 w-10 text-rose-50" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M18 6L6 18M6 6l12 12M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z" stroke-width="1.8"/>
+            </svg>
+          </article>
+
+          <article class="relative overflow-hidden rounded-[1.75rem] border-l-4 border-amber-500 bg-white p-6 shadow-sm">
+            <p class="mb-2 flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest text-slate-400">
+              Pendientes
+              <span class="rounded bg-amber-100 px-2 py-0.5 text-[8px] text-amber-700">NUEVOS</span>
+            </p>
+            <h4 class="text-3xl font-extrabold text-amber-600">5</h4>
+            <svg class="absolute bottom-4 right-4 h-10 w-10 text-amber-50" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="6" cy="12" r="1.8" fill="currentColor" stroke="none"/>
+              <circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/>
+              <circle cx="18" cy="12" r="1.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </article>
+        </section>
+
+        <!-- Panel tabla -->
+        <section class="rounded-[2rem] border border-slate-100 bg-table-panel p-5">
+          <div class="mb-5 flex flex-col items-center justify-between gap-3 md:flex-row">
+            <div class="relative w-full md:w-80">
+              <svg class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15z" stroke-width="2"/>
+              </svg>
+              <input type="text" placeholder="Buscar usuario por nombre, DNI o empresa..." class="w-full rounded-full border-none bg-white py-3 pl-12 pr-4 text-sm shadow-sm focus:ring-2 focus:ring-primary" />
+            </div>
+
+            <div class="flex w-full items-center gap-3 md:w-auto">
+              <button class="flex flex-1 items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-600 shadow-sm md:flex-none">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M3 5h18M6 12h12M10 19h4" stroke-width="2"/>
+                </svg>
+                Filtros avanzados
+              </button>
+
+              <button class="flex flex-1 items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-600 shadow-sm md:flex-none">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14" stroke-width="2"/>
+                </svg>
+                Exportar
+              </button>
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-[1.5rem] border border-slate-100 bg-white shadow-sm">
+            <table class="w-full border-collapse text-left">
+              <thead>
+                <tr class="bg-slate-50/50">
+                  <th class="px-6 py-4 text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Nombre</th>
+                  <th class="px-6 py-4 text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Identificación</th>
+                  <th class="px-6 py-4 text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Empresa</th>
+                  <th class="px-6 py-4 text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Rol</th>
+                  <th class="px-6 py-4 text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Estado</th>
+                  <th class="px-6 py-4 text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Registro</th>
+                  <th class="px-6 py-4 text-right text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Acciones</th>
+                </tr>
+              </thead>
+
+              <tbody class="divide-y divide-slate-50">
+                <tr class="hover:bg-slate-50/50">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">RM</div>
+                      <div>
+                        <p class="text-sm font-bold text-slate-900">Ricardo Mendoza</p>
+                        <p class="text-[11px] text-slate-400">r.mendoza@ecoplast.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm font-medium text-slate-600">45829304</td>
+                  <td class="px-6 py-4 text-sm italic text-slate-600">Ecoplast S.A.C</td>
+                  <td class="px-6 py-4">
+                    <span class="rounded-full bg-primary/10 px-3 py-1 text-[10px] font-extrabold uppercase text-primary">Socio</span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-2">
+                      <div class="h-2 w-2 rounded-full bg-primary"></div>
+                      <span class="text-sm font-bold text-primary">Activo</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-slate-500">12 Oct 2023</td>
+                  <td class="space-x-1 px-6 py-4 text-right">
+                    <button class="rounded-lg p-2 text-slate-400 hover:bg-primary/5 hover:text-primary">
+                      <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M11 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5M16.5 3.5a2.121 2.121 0 1 1 3 3L12 14l-4 1 1-4 7.5-7.5z" stroke-width="2"/>
+                      </svg>
+                    </button>
+                    <button class="rounded-lg p-2 text-slate-400 hover:bg-rose-50 hover:text-rose-600">
+                      <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M15 11V8a3 3 0 1 0-6 0v3m-1 0h8a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2z" stroke-width="2"/>
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr class="hover:bg-slate-50/50">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-sm font-bold text-slate-500">SG</div>
+                      <div>
+                        <p class="text-sm font-bold text-slate-900">Sandra Guerra</p>
+                        <p class="text-[11px] text-slate-400">s.guerra@circular-peru.org</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm font-medium text-slate-600">72930411</td>
+                  <td class="px-6 py-4 text-sm italic text-slate-600">Circular Perú</td>
+                  <td class="px-6 py-4">
+                    <span class="rounded-full bg-amber-50 px-3 py-1 text-[10px] font-extrabold uppercase text-amber-700">Visualizador</span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-2">
+                      <div class="h-2 w-2 rounded-full bg-primary"></div>
+                      <span class="text-sm font-bold text-primary">Activo</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-slate-500">15 Nov 2023</td>
+                  <td class="space-x-1 px-6 py-4 text-right">
+                    <button class="rounded-lg p-2 text-slate-400 hover:bg-primary/5 hover:text-primary">
+                      <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M11 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5M16.5 3.5a2.121 2.121 0 1 1 3 3L12 14l-4 1 1-4 7.5-7.5z" stroke-width="2"/>
+                      </svg>
+                    </button>
+                    <button class="rounded-lg p-2 text-slate-400 hover:bg-rose-50 hover:text-rose-600">
+                      <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M15 11V8a3 3 0 1 0-6 0v3m-1 0h8a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2z" stroke-width="2"/>
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr class="hover:bg-slate-50/50">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-sm font-bold text-slate-500">JP</div>
+                      <div>
+                        <p class="text-sm font-bold text-slate-900">Jorge Pineda</p>
+                        <p class="text-[11px] text-slate-400">jorge.p@plasticosol.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm font-medium text-slate-600">22938475</td>
+                  <td class="px-6 py-4 text-sm italic text-slate-600">Plasticosol S.A.</td>
+                  <td class="px-6 py-4">
+                    <span class="rounded-full bg-primary/10 px-3 py-1 text-[10px] font-extrabold uppercase text-primary">Socio</span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-2">
+                      <div class="h-2 w-2 rounded-full bg-rose-500"></div>
+                      <span class="text-sm font-bold text-rose-600">Bloqueado</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-slate-500">05 Ene 2024</td>
+                  <td class="space-x-1 px-6 py-4 text-right">
+                    <button class="rounded-lg p-2 text-slate-400 hover:bg-primary/5 hover:text-primary">
+                      <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M11 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5M16.5 3.5a2.121 2.121 0 1 1 3 3L12 14l-4 1 1-4 7.5-7.5z" stroke-width="2"/>
+                      </svg>
+                    </button>
+                    <button class="rounded-lg bg-rose-50 p-2 text-rose-600">
+                      <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M8 11V8a4 4 0 1 1 8 0M7 11h10a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2z" stroke-width="2"/>
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="flex items-center justify-between bg-slate-50/30 px-6 py-4">
+              <p class="text-xs text-slate-400">
+                Mostrando <span class="font-bold text-slate-900">1 - 10</span> de <span class="font-bold text-slate-900">142</span> usuarios
+              </p>
+
+              <div class="flex items-center gap-2">
+                <button class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 text-slate-400" disabled>
+                  <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M15 19l-7-7 7-7" stroke-width="2"/>
+                  </svg>
+                </button>
+                <button class="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-bold text-white">1</button>
+                <button class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 text-sm font-bold text-slate-600">2</button>
+                <button class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 text-sm font-bold text-slate-600">3</button>
+                <span class="px-1 text-slate-400">...</span>
+                <button class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 text-sm font-bold text-slate-600">15</button>
+                <button class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 text-slate-400">
+                  <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M9 5l7 7-7 7" stroke-width="2"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registros de Descargas - Recíclame</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "on-surface-variant": "#3c4a42",
+            "surface-tint": "#006c49",
+            "secondary": "#0058be",
+            "inverse-on-surface": "#eff1f3",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "on-secondary-fixed-variant": "#004395",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#001a42",
+            "outline-variant": "#bbcabf",
+            "inverse-surface": "#2d3133",
+            "tertiary-fixed": "#dae2fd",
+            "secondary-fixed-dim": "#adc6ff",
+            "on-tertiary-container": "#31394d",
+            "surface-container-lowest": "#ffffff",
+            "outline": "#6c7a71",
+            "on-primary-fixed": "#002113",
+            "surface-variant": "#e0e3e5",
+            "on-error-container": "#93000a",
+            "inverse-primary": "#4edea3",
+            "on-secondary-container": "#fefcff",
+            "surface-container-high": "#e6e8ea",
+            "tertiary": "#565e74",
+            "error": "#ba1a1a",
+            "on-secondary": "#ffffff",
+            "background": "#f7f9fb",
+            "surface-container-low": "#f2f4f6",
+            "on-surface": "#191c1e",
+            "primary-container": "#10b981",
+            "on-primary-container": "#00422b",
+            "on-error": "#ffffff",
+            "surface-container": "#eceef0",
+            "error-container": "#ffdad6",
+            "surface-bright": "#f7f9fb",
+            "surface-dim": "#d8dadc",
+            "on-primary-fixed-variant": "#005236",
+            "on-tertiary-fixed": "#131b2e",
+            "tertiary-container": "#9ba2bb",
+            "secondary-container": "#2170e4",
+            "primary": "#006c49",
+            "tertiary-fixed-dim": "#bec6e0",
+            "on-background": "#191c1e",
+            "surface": "#f7f9fb",
+            "primary-fixed": "#6ffbbe",
+            "primary-fixed-dim": "#4edea3",
+            "secondary-fixed": "#d8e2ff",
+            "surface-container-highest": "#e0e3e5",
+            "sidebar-active": "#059669",
+            "sidebar-activeBg": "#F0FDF4"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { font-family: Inter, system-ui, sans-serif; }
+  </style>
+</head>
+<body class="bg-background text-on-surface">
+  <div class="flex min-h-screen">
+    <aside class="fixed z-50 flex h-full w-56 flex-col border-r border-slate-200 bg-white">
+      <div class="flex items-center gap-3 p-5">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#103043] text-white">
+          <svg class="h-5 w-5 text-current" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h1 class="text-base font-extrabold leading-tight tracking-tight text-[#103043]">Repositorio<br />Circular</h1>
+      </div>
+
+      <nav class="mt-4 flex-1 space-y-1 px-3">
+        <a href="#" class="flex items-center gap-3 rounded-xl px-4 py-2.5 text-slate-500 hover:bg-slate-50">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="text-sm font-semibold">Dashboard</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 rounded-xl px-4 py-2.5 text-slate-500 hover:bg-slate-50">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 20a4 4 0 00-8 0M12 12a4 4 0 100-8 4 4 0 000 8M5 20a3 3 0 013-3m8 3a3 3 0 013-3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="text-sm font-semibold">Usuarios</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 rounded-xl px-4 py-2.5 text-slate-500 hover:bg-slate-50">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="text-sm font-semibold">Estudios</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 rounded-xl px-4 py-2.5 text-slate-500 hover:bg-slate-50">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 9V5a3 3 0 00-6 0v4M5 9h14l-1 10a2 2 0 01-2 2H8a2 2 0 01-2-2L5 9z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="text-sm font-semibold">Repositorio Normativo</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 rounded-xl px-4 py-2.5 text-slate-500 hover:bg-slate-50">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="text-sm font-semibold">Registros de actividad</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 rounded-xl border-r-4 border-sidebar-active bg-sidebar-activeBg px-4 py-2.5 text-sidebar-active">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="text-sm font-bold">Registros de descargas</span>
+        </a>
+      </nav>
+    </aside>
+
+    <div class="ml-56 flex min-h-screen flex-1 flex-col">
+      <header class="sticky top-0 z-40 flex h-16 items-center justify-between bg-white/85 px-8 backdrop-blur-xl shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+        <div class="flex items-center gap-3">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#103043] text-white">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="text-lg font-extrabold tracking-tight text-[#103043]">Recíclame</span>
+        </div>
+
+        <div class="flex items-center gap-5">
+          <button class="text-slate-500 hover:text-primary" aria-label="Notificaciones">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 20a2 2 0 004 0" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+
+          <button class="text-slate-500 hover:text-primary" aria-label="Configuración">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M10.325 4.317a1 1 0 011.35-.936l.695.278a1 1 0 00.739 0l.695-.278a1 1 0 011.35.936l.057.746a1 1 0 00.528.818l.62.35a1 1 0 01.377 1.36l-.375.648a1 1 0 000 .998l.375.648a1 1 0 01-.377 1.36l-.62.35a1 1 0 00-.528.818l-.057.746a1 1 0 01-1.35.936l-.695-.278a1 1 0 00-.739 0l-.695.278a1 1 0 01-1.35-.936l-.057-.746a1 1 0 00-.528-.818l-.62-.35a1 1 0 01-.377-1.36l.375-.648a1 1 0 000-.998l-.375-.648a1 1 0 01.377-1.36l.62-.35a1 1 0 00.528-.818l.057-.746z" stroke-width="1.5"/>
+              <circle cx="12" cy="12" r="3" stroke-width="1.8"/>
+            </svg>
+          </button>
+
+          <div class="h-7 w-px bg-slate-200"></div>
+
+          <div class="flex items-center gap-3">
+            <div class="text-right">
+              <p class="text-sm font-bold leading-tight text-on-surface">Ana Flores</p>
+              <p class="text-[10px] font-bold uppercase tracking-widest text-primary">ADMIN</p>
+            </div>
+            <div class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary/20 bg-emerald-100 font-bold text-primary">
+              AF
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1 space-y-7 p-8">
+        <section>
+          <h1 class="mb-2 text-3xl font-extrabold tracking-tight text-[#0f172a]">Registros de Descargas</h1>
+          <p class="text-base font-medium leading-relaxed text-on-surface-variant/70">
+            Gestione y audite el flujo de información técnica de la plataforma en tiempo real.
+          </p>
+        </section>
+
+        <section class="grid grid-cols-1 gap-5 xl:grid-cols-4">
+          <div class="rounded-[28px] bg-white p-6 shadow-[0_12px_30px_rgba(0,0,0,0.04)]">
+            <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">TOTAL MENSUAL</p>
+            <div class="mb-2 flex items-baseline gap-3">
+              <span class="text-3xl font-extrabold text-[#0f172a]">1,284</span>
+              <span class="flex items-center gap-1 rounded-full bg-primary-container/10 px-2 py-1 text-xs font-bold text-primary-container">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M5 15l5-5 4 4 5-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M19 7h-4v4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                +12%
+              </span>
+            </div>
+            <p class="text-xs text-slate-400">vs mes anterior</p>
+          </div>
+
+          <div class="rounded-[28px] bg-white p-6 shadow-[0_12px_30px_rgba(0,0,0,0.04)]">
+            <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">NORMATIVAS</p>
+            <div class="mb-5 text-3xl font-extrabold text-[#0f172a]">842</div>
+            <div class="h-1.5 w-full overflow-hidden rounded-full bg-surface-container-low">
+              <div class="h-full w-[65%] rounded-full bg-secondary-container"></div>
+            </div>
+          </div>
+
+          <div class="rounded-[28px] bg-white p-6 shadow-[0_12px_30px_rgba(0,0,0,0.04)]">
+            <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">ESTUDIOS</p>
+            <div class="mb-5 text-3xl font-extrabold text-[#0f172a]">442</div>
+            <div class="h-1.5 w-full overflow-hidden rounded-full bg-surface-container-low">
+              <div class="h-full w-[35%] rounded-full bg-primary-container"></div>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-between rounded-[28px] bg-primary p-6 shadow-[0_20px_40px_-15px_rgba(0,108,73,0.3)]">
+            <div>
+              <p class="mb-2 text-[10px] font-bold uppercase tracking-[0.15em] text-primary-fixed opacity-80">ACCIÓN RÁPIDA</p>
+              <h3 class="text-lg font-bold leading-tight text-white">Generar reporte consolidado</h3>
+            </div>
+            <button class="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-white py-3 font-extrabold text-primary">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Exportar a Excel
+            </button>
+          </div>
+        </section>
+
+        <section class="flex flex-wrap items-center gap-4 rounded-[28px] bg-surface-container-low p-5">
+          <div class="relative min-w-[220px] flex-1">
+            <svg class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <input type="text" placeholder="BÚSQUEDA GLOBAL" class="w-full rounded-full border-none bg-white py-3 pl-12 pr-4 text-sm font-medium uppercase tracking-wider placeholder:text-slate-400 focus:ring-2 focus:ring-primary/20" />
+          </div>
+
+          <div class="relative">
+            <select class="appearance-none rounded-full border-none bg-white py-3 pl-6 pr-12 text-sm font-bold uppercase tracking-wider text-on-surface focus:ring-2 focus:ring-primary/20">
+              <option>SECCIÓN</option>
+              <option>Normativas</option>
+              <option>Estudios</option>
+            </select>
+            <svg class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="flex items-center gap-3 rounded-[28px] bg-white px-5 py-3">
+            <svg class="h-11 w-11 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M8 2v4M16 2v4M3 10h18M5 5h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="text-sm font-bold uppercase tracking-wider text-on-surface">OCT 20, 2023 - OCT 24, 2023</span>
+          </div>
+
+          <button class="flex h-11 w-11 items-center justify-center rounded-full bg-[#0f172a] text-white" aria-label="Filtrar">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M3 5h18M6 12h12M10 19h4" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </section>
+
+        <section class="overflow-hidden rounded-[28px] bg-white shadow-[0_12px_30px_rgba(0,0,0,0.04)]">
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse text-left">
+              <thead>
+                <tr class="bg-surface-container-low/50">
+                  <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">USUARIO</th>
+                  <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">DOCUMENTO</th>
+                  <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">SECCIÓN</th>
+                  <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">FECHA</th>
+                  <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">HORA</th>
+                  <th class="px-6 py-4"></th>
+                </tr>
+              </thead>
+
+              <tbody class="divide-y divide-surface-container">
+                <tr class="hover:bg-surface-container-low/30">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-sm font-bold text-[#0f172a]">AM</div>
+                      <div>
+                        <p class="text-sm font-bold text-on-surface">Alejandro Mendoza</p>
+                        <p class="text-[10px] font-medium text-slate-400">ID: 9283-U</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <svg class="h-5 w-5 text-error" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"></path>
+                      </svg>
+                      <span class="text-sm font-semibold text-on-surface-variant">Manual_Residuos_Solidos_2024.pdf</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4"><span class="inline-flex rounded-full bg-secondary-container/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-secondary-container">NORMATIVAS</span></td>
+                  <td class="px-6 py-4 text-sm font-medium text-on-surface-variant">Oct 24, 2023</td>
+                  <td class="px-6 py-4 text-sm font-medium text-on-surface-variant">14:25:01</td>
+                  <td class="px-6 py-4 text-right">
+                    <button class="text-slate-400 hover:text-primary">⋮</button>
+                  </td>
+                </tr>
+
+                <tr class="hover:bg-surface-container-low/30">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-sm font-bold text-[#0f172a]">LP</div>
+                      <div>
+                        <p class="text-sm font-bold text-on-surface">Lucía Pardo</p>
+                        <p class="text-[10px] font-medium text-slate-400">ID: 1045-U</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <svg class="h-5 w-5 text-secondary" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"></path>
+                      </svg>
+                      <span class="text-sm font-semibold text-on-surface-variant">Estudio_Impacto_Circular_Textil.docx</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4"><span class="inline-flex rounded-full bg-primary-container/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-container">ESTUDIOS</span></td>
+                  <td class="px-6 py-4 text-sm font-medium text-on-surface-variant">Oct 23, 2023</td>
+                  <td class="px-6 py-4 text-sm font-medium text-on-surface-variant">09:12:44</td>
+                  <td class="px-6 py-4 text-right">
+                    <button class="text-slate-400 hover:text-primary">⋮</button>
+                  </td>
+                </tr>
+
+                <tr class="hover:bg-surface-container-low/30">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-sm font-bold text-[#0f172a]">RC</div>
+                      <div>
+                        <p class="text-sm font-bold text-on-surface">Roberto Castillo</p>
+                        <p class="text-[10px] font-medium text-slate-400">ID: 8821-U</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <svg class="h-5 w-5 text-error" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"></path>
+                      </svg>
+                      <span class="text-sm font-semibold text-on-surface-variant">Plan_Accion_Plasticos_UN.pdf</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4"><span class="inline-flex rounded-full bg-secondary-container/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-secondary-container">NORMATIVAS</span></td>
+                  <td class="px-6 py-4 text-sm font-medium text-on-surface-variant">Oct 23, 2023</td>
+                  <td class="px-6 py-4 text-sm font-medium text-on-surface-variant">17:45:12</td>
+                  <td class="px-6 py-4 text-right">
+                    <button class="text-slate-400 hover:text-primary">⋮</button>
+                  </td>
+                </tr>
+
+                <tr class="hover:bg-surface-container-low/30">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-sm font-bold text-[#0f172a]">ES</div>
+                      <div>
+                        <p class="text-sm font-bold text-on-surface">Elena Suárez</p>
+                        <p class="text-[10px] font-medium text-slate-400">ID: 4432-U</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <svg class="h-5 w-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5Z"></path>
+                      </svg>
+                      <span class="text-sm font-semibold text-on-surface-variant">Analisis_Metales_Reciclados_2023.xlsx</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4"><span class="inline-flex rounded-full bg-primary-container/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-container">ESTUDIOS</span></td>
+                  <td class="px-6 py-4 text-sm font-medium text-on-surface-variant">Oct 22, 2023</td>
+                  <td class="px-6 py-4 text-sm font-medium text-on-surface-variant">11:05:30</td>
+                  <td class="px-6 py-4 text-right">
+                    <button class="text-slate-400 hover:text-primary">⋮</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="flex items-center justify-between border-t border-surface-container px-6 py-4">
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Mostrando 1 a 4 de 284 registros</p>
+            <div class="flex items-center gap-2">
+              <button class="flex h-9 w-9 items-center justify-center rounded-full text-slate-400 hover:bg-surface-container">‹</button>
+              <button class="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">1</button>
+              <button class="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-on-surface hover:bg-surface-container">2</button>
+              <button class="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-on-surface hover:bg-surface-container">3</button>
+              <button class="flex h-9 w-9 items-center justify-center rounded-full text-on-surface hover:bg-surface-container">›</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

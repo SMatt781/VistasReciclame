@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bloquear Usuario - Recíclame</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "secondary-fixed-dim": "#adc6ff",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "tertiary": "#565e74",
+            "primary-container": "#10b981",
+            "on-background": "#191c1e",
+            "on-error": "#ffffff",
+            "error": "#ba1a1a",
+            "secondary-container": "#2170e4",
+            "primary-fixed": "#6ffbbe",
+            "surface-dim": "#d8dadc",
+            "tertiary-fixed-dim": "#bec6e0",
+            "surface-bright": "#f7f9fb",
+            "on-primary-container": "#00422b",
+            "outline": "#6c7a71",
+            "on-error-container": "#93000a",
+            "outline-variant": "#bbcabf",
+            "error-container": "#ffdad6",
+            "tertiary-fixed": "#dae2fd",
+            "surface-container-low": "#f2f4f6",
+            "inverse-on-surface": "#eff1f3",
+            "surface-container-high": "#e6e8ea",
+            "primary": "#006c49",
+            "on-tertiary-fixed": "#131b2e",
+            "inverse-surface": "#2d3133",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed-variant": "#004395",
+            "primary-fixed-dim": "#4edea3",
+            "on-primary": "#ffffff",
+            "on-surface": "#191c1e",
+            "on-tertiary-container": "#31394d",
+            "on-primary-fixed-variant": "#005236",
+            "on-tertiary": "#ffffff",
+            "on-secondary-container": "#fefcff",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#001a42",
+            "surface": "#f7f9fb",
+            "secondary": "#0058be",
+            "surface-variant": "#e0e3e5",
+            "secondary-fixed": "#d8e2ff",
+            "surface-container-highest": "#e0e3e5",
+            "surface-container": "#eceef0",
+            "surface-tint": "#006c49",
+            "inverse-primary": "#4edea3",
+            "tertiary-container": "#9ba2bb",
+            "on-primary-fixed": "#002113",
+            "background": "#f7f9fb",
+            "on-surface-variant": "#3c4a42",
+            "sidebar-active": "#059669",
+            "sidebar-activeBg": "#F0FDF4"
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+            lg: "2rem",
+            xl: "3rem",
+            full: "9999px"
+          },
+          fontFamily: {
+            sans: ["Inter", "system-ui", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="h-full overflow-hidden bg-surface font-sans text-on-surface">
+  <div class="relative flex h-screen w-full blur-md grayscale-[0.2]">
+    <aside class="fixed left-0 top-0 z-10 flex h-full w-72 flex-col overflow-y-auto border-r border-slate-200 bg-white">
+      <div class="flex items-center gap-3 px-8 py-10">
+        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#103043] text-white">
+          <svg class="h-6 w-6 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="leading-none tracking-tighter text-[#103043] text-lg font-black">Recíclame</h1>
+          <p class="mt-1 text-[10px] font-medium uppercase tracking-[0.2em] text-slate-500">The Conscious Archive</p>
+        </div>
+      </div>
+
+      <nav class="flex-1 space-y-1 px-4">
+        <a href="#" class="flex items-center gap-4 rounded-xl px-6 py-4 text-sm font-semibold tracking-tight text-slate-500 transition-colors duration-200 hover:bg-slate-50 hover:text-emerald-600">
+          <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          Dashboard
+        </a>
+
+        <a href="#" class="flex items-center gap-4 rounded-xl border-r-4 border-sidebar-active bg-sidebar-activeBg px-6 py-4 text-sm font-bold tracking-tight text-sidebar-active">
+          <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M17 20a4 4 0 00-8 0M12 12a4 4 0 100-8 4 4 0 000 8M5 20a3 3 0 013-3m8 3a3 3 0 013-3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          Usuarios
+        </a>
+
+        <a href="#" class="flex items-center gap-4 rounded-xl px-6 py-4 text-sm font-semibold tracking-tight text-slate-500 transition-colors duration-200 hover:bg-slate-50 hover:text-emerald-600">
+          <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M14 9V5a3 3 0 00-6 0v4M5 9h14l-1 10a2 2 0 01-2 2H8a2 2 0 01-2-2L5 9z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          Normativas
+        </a>
+
+        <a href="#" class="flex items-center gap-4 rounded-xl px-6 py-4 text-sm font-semibold tracking-tight text-slate-500 transition-colors duration-200 hover:bg-slate-50 hover:text-emerald-600">
+          <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          Estudios
+        </a>
+      </nav>
+
+      <div class="mt-auto border-t border-slate-100 p-8">
+        <a href="#" class="flex items-center gap-4 text-sm font-semibold text-slate-500 transition-colors hover:text-emerald-600">
+          <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M10.325 4.317a1 1 0 011.35-.936l.695.278a1 1 0 00.739 0l.695-.278a1 1 0 011.35.936l.057.746a1 1 0 00.528.818l.62.35a1 1 0 01.377 1.36l-.375.648a1 1 0 000 .998l.375.648a1 1 0 01-.377 1.36l-.62.35a1 1 0 00-.528.818l-.057.746a1 1 0 01-1.35.936l-.695-.278a1 1 0 00-.739 0l-.695.278a1 1 0 01-1.35-.936l-.057-.746a1 1 0 00-.528-.818l-.62-.35a1 1 0 01-.377-1.36l.375-.648a1 1 0 000-.998l-.375-.648a1 1 0 01.377-1.36l.62-.35a1 1 0 00.528-.818l.057-.746z" stroke-width="1.5"></path>
+            <circle cx="12" cy="12" r="3" stroke-width="1.8"></circle>
+          </svg>
+          Configuración
+        </a>
+      </div>
+    </aside>
+
+    <div class="ml-72 flex h-full flex-1 flex-col bg-surface">
+      <header class="fixed right-0 top-0 z-40 flex h-20 w-[calc(100%-18rem)] items-center justify-between bg-slate-50/80 px-10 py-4 backdrop-blur-md">
+        <div class="flex items-center gap-6">
+          <h1 class="text-lg font-bold text-emerald-600">Gestión de Usuarios</h1>
+
+          <div class="group relative">
+            <svg class="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <input type="text" placeholder="Buscar usuario..." class="w-64 rounded-full border-none bg-surface-container-low py-2 pl-10 pr-6 text-sm transition-all focus:ring-2 focus:ring-emerald-500/20" />
+          </div>
+        </div>
+
+        <div class="flex items-center gap-6">
+          <button class="rounded-full p-2 text-slate-500 transition-all hover:bg-slate-200/50" aria-label="Notificaciones">
+            <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M10 20a2 2 0 004 0" stroke-width="1.8" stroke-linecap="round"></path>
+            </svg>
+          </button>
+
+          <button class="rounded-full p-2 text-slate-500 transition-all hover:bg-slate-200/50" aria-label="Ayuda">
+            <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M12 18h.01M9.09 9a3 3 0 115.82 1c0 2-3 3-3 3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="12" cy="12" r="9" stroke-width="1.8"></circle>
+            </svg>
+          </button>
+
+          <div class="flex items-center gap-3 border-l border-slate-200 pl-4">
+            <div class="text-right">
+              <p class="text-xs font-bold text-on-surface">Admin User</p>
+              <p class="text-[10px] text-slate-500">Super Administrador</p>
+            </div>
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-700 ring-2 ring-emerald-500/10">
+              AU
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="mt-20 space-y-8 p-10">
+        <div class="grid grid-cols-4 gap-6">
+          <div class="rounded-xl border border-outline-variant/10 bg-surface-container-lowest p-6 shadow-sm">
+            <div class="mb-4 flex items-start justify-between">
+              <span class="flex rounded-lg bg-emerald-100 p-3 text-emerald-600">
+                <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M17 20a4 4 0 00-8 0M12 12a4 4 0 100-8 4 4 0 000 8M5 20a3 3 0 013-3m8 3a3 3 0 013-3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </span>
+              <span class="rounded bg-emerald-50 px-2 py-1 text-xs font-bold text-emerald-600">+12%</span>
+            </div>
+            <p class="mb-1 text-xs font-medium uppercase tracking-wider text-slate-500">Total Usuarios</p>
+            <h3 class="text-3xl font-extrabold text-on-surface">1,284</h3>
+          </div>
+
+          <div class="rounded-xl border border-outline-variant/10 bg-surface-container-lowest p-6 shadow-sm">
+            <div class="mb-4 flex items-start justify-between">
+              <span class="flex rounded-lg bg-blue-100 p-3 text-blue-600">
+                <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 12l2 2 4-4M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </span>
+            </div>
+            <p class="mb-1 text-xs font-medium uppercase tracking-wider text-slate-500">Activos</p>
+            <h3 class="text-3xl font-extrabold text-on-surface">1,120</h3>
+          </div>
+
+          <div class="rounded-xl border border-outline-variant/10 bg-surface-container-lowest p-6 shadow-sm">
+            <div class="mb-4 flex items-start justify-between">
+              <span class="flex rounded-lg bg-amber-100 p-3 text-amber-600">
+                <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 8v4l3 3M7 3h10M9 3v3m6-3v3M8 21h8a2 2 0 002-2v-5a6 6 0 10-12 0v5a2 2 0 002 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </span>
+            </div>
+            <p class="mb-1 text-xs font-medium uppercase tracking-wider text-slate-500">Pendientes</p>
+            <h3 class="text-3xl font-extrabold text-on-surface">43</h3>
+          </div>
+
+          <div class="rounded-xl border border-outline-variant/10 bg-surface-container-lowest p-6 shadow-sm">
+            <div class="mb-4 flex items-start justify-between">
+              <span class="flex rounded-lg bg-rose-100 p-3 text-rose-600">
+                <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M18 6L6 18M6 6l12 12M12 3a9 9 0 100 18 9 9 0 000-18z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </span>
+            </div>
+            <p class="mb-1 text-xs font-medium uppercase tracking-wider text-slate-500">Bloqueados</p>
+            <h3 class="text-3xl font-extrabold text-on-surface">121</h3>
+          </div>
+        </div>
+
+        <div class="overflow-hidden rounded-xl border border-outline-variant/10 bg-surface-container-lowest shadow-sm">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="border-b border-slate-100 bg-slate-50 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                <th class="px-8 py-4">Usuario</th>
+                <th class="px-8 py-4">Correo</th>
+                <th class="px-8 py-4">Rol</th>
+                <th class="px-8 py-4">Estado</th>
+                <th class="px-8 py-4 text-right">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-50">
+              <tr class="transition-colors hover:bg-slate-50/50">
+                <td class="flex items-center gap-3 px-8 py-4">
+                  <div class="flex h-8 w-8 items-center justify-center rounded-full bg-rose-100 text-xs font-bold text-rose-700">ER</div>
+                  <span class="text-sm font-semibold">Elena Rodríguez</span>
+                </td>
+                <td class="px-8 py-4 text-sm text-slate-600">elena.rod@archive.org</td>
+                <td class="px-8 py-4">
+                  <span class="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-600">EDITOR</span>
+                </td>
+                <td class="px-8 py-4">
+                  <span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-emerald-600">
+                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                    ACTIVO
+                  </span>
+                </td>
+                <td class="px-8 py-4 text-right">
+                  <button class="text-slate-400 transition-colors hover:text-rose-600" aria-label="Bloquear">
+                    <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path d="M18 6L6 18M6 6l12 12M12 3a9 9 0 100 18 9 9 0 000-18z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+
+              <tr class="transition-colors hover:bg-slate-50/50">
+                <td class="flex items-center gap-3 px-8 py-4">
+                  <div class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-700">MS</div>
+                  <span class="text-sm font-semibold">Marcos Silva</span>
+                </td>
+                <td class="px-8 py-4 text-sm text-slate-600">m.silva@reciclame.com</td>
+                <td class="px-8 py-4">
+                  <span class="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-600">USUARIO</span>
+                </td>
+                <td class="px-8 py-4">
+                  <span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-emerald-600">
+                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                    ACTIVO
+                  </span>
+                </td>
+                <td class="px-8 py-4 text-right">
+                  <button class="text-slate-400 transition-colors hover:text-rose-600" aria-label="Bloquear">
+                    <svg class="h-5 w-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path d="M18 6L6 18M6 6l12 12M12 3a9 9 0 100 18 9 9 0 000-18z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4 backdrop-blur-sm">
+    <section class="w-full max-w-md overflow-hidden rounded-xl bg-white shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+      <div class="flex flex-col items-center p-10 text-center">
+        <div class="mb-6">
+          <svg class="h-16 w-16 text-[#c5221f]" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L1 21H23L12 2Z" fill="rgba(197, 34, 31, 0.1)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            <path d="M12 9V13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            <path d="M12 17H12.01" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </div>
+
+        <h2 class="mb-4 text-2xl font-bold text-slate-900">¿Bloquear usuario?</h2>
+        <p class="mb-10 px-4 text-sm leading-relaxed text-slate-500">
+          Esta acción impedirá que el usuario acceda a sus documentos y al repositorio de forma inmediata. ¿Estás seguro de continuar?
+        </p>
+
+        <div class="flex w-full gap-4">
+          <button class="flex-1 rounded-lg bg-slate-100 px-6 py-3.5 font-bold text-slate-700 transition-all active:scale-[0.98] hover:bg-slate-200">
+            Cancelar
+          </button>
+          <button class="flex-1 rounded-lg bg-[#c5221f] px-6 py-3.5 font-bold text-white shadow-lg shadow-rose-900/20 transition-all active:scale-[0.98] hover:bg-[#a31a18]">
+            Sí, bloquear
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
